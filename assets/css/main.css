@@ -257,3 +257,116 @@
     width: 90%;
     color: #d3d3d3;
 }
+
+/* authform */
+
+.modal-authform{
+    width: 500px;
+    background-color: var(--white-color);
+    border-radius: 5px;
+}
+
+
+
+.modal-authform-container{
+    padding: 0 32px;
+}
+
+.modal-authform-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-authform-heading{
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--text-color);
+   
+}
+
+.modal-authform-switch-btn{
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+
+.modal-authform-input{
+    height: 40px;
+    width: 100%;
+    margin-top: 16px;
+    padding: 0 12px;
+    font-size: 1.4rem;
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    outline: none;
+}
+
+.modal-authform-input:focus{
+    border-color: #888;
+}
+
+.modal-authform-aside{
+    margin-top: 14px;
+}
+.modal-authform-policy-text{
+    font-size: 1.2rem;
+    line-height: 2rem;
+    text-align: center;
+    padding: 0 12px;
+}
+
+.modal-authform-policy-link{
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.modal-controls{
+    margin-top: 80px;
+    display: flex;
+    justify-content: flex-end;    
+}
+
+.modal-controls-back{
+    margin-right: 8px;
+    background-color: var(--white-color);
+}
+
+.modal-socials{
+    background-color: #f5f5f5;
+    padding: 12px 36px;
+    margin-top: 22px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.modal-socials-icon{
+    font-size: 1.6rem;
+}
+
+.modal-socials-facebook{
+    background-color: #3a5a98;
+    color: var(--white-color);
+}
+
+.modal-socials-google{
+    color: #666;
+    background-color: var(--white-color);
+}
+
+.modal-socials-facebook
+.modal-socials-icon{
+    color: var(--white-color);
+}
+
+.modal-socials-title{
+    margin: 0 32px;
+}
+
+
+
+
+
