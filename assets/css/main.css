@@ -264,6 +264,7 @@
     width: 500px;
     background-color: var(--white-color);
     border-radius: 5px;
+    overflow: hidden;
 }
 
 
@@ -364,6 +365,29 @@
 
 .modal-socials-title{
     margin: 0 32px;
+}
+
+
+.modal-authform-help{
+    display: flex;
+    justify-content: flex-end;
+}
+.modal-authform-help-link{
+    font-size: 1.4rem;
+    
+    text-decoration: none;
+    color: #939393;
+}
+
+.modal-authform-help-link.modal-authform-help-text{
+    color: var(--primary-color);
+}
+
+.modal-authform-help-separate{
+    display: blocks;
+    border: 1px solid #EAEAEA;
+    height: 2rem;
+    margin: 2px 12px 0;
 }
 
 
