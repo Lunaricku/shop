@@ -21,6 +21,9 @@ html{
     box-sizing: border-box;
 }
 
+
+/* reponsive */
+
 .grid{
     width: 1200px;
     max-width: 100%;
@@ -34,7 +37,20 @@ html{
 .grid__row{
     display: flex;
     flex-wrap: wrap;
+    padding-left: -12px;
+    padding-right: -12px;
+}
 
+.grid__column-2{
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 16.6667%;
+}
+
+.grid__column-10{
+    padding-left: 12px;
+    padding-right: 12px;
+    width: 83.3334%;
 }
 
 
@@ -99,7 +115,7 @@ html{
     cursor: pointer;
     background-color: var(--white-color);
     color: var(--text-color);
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
 }
@@ -122,5 +138,58 @@ html{
     cursor: default;
     background-color: #999;
     color: #ccc;
+}
+
+
+/* select input */
+
+.select-input{
+    position: relative;
+    min-width: 200px;
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--white-color);
+}
+.select-label{
+    font-size: 1.4rem;
+}
+
+
+.select-input:hover .select-list{
+    display: block;
+}
+
+.select-input-icon{
+    color: #4a4a4a;
+    position: relative;
+    top: 1px;
+    cursor: pointer;
+}
+
+.select-list{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 26px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    list-style: none;
+    padding: 8px 16px;
+    display: none;
+}
+
+.select-link{
+    text-decoration: none   ;
+    color: var(--text-color);
+    font-size: 1.3rem;
+    padding: 4px 0;
+}
+
+.select-link:hover{
+    color: var(--primary-color);
 }
 
