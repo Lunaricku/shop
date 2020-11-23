@@ -80,7 +80,7 @@ html{
     --growth-to : 1;
     margin: auto;
     position: relative;
-    z-index: 1 ;
+    z-index: 4 ;
     animation: growth linear 0.1s;
 }
 
@@ -88,7 +88,7 @@ html{
 /* button style */
 
 .btn{
-    min-width: 142px;
+    min-width: 124px;
     height: 34px;
     text-decoration: none;
     border: none;
