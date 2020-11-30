@@ -8,6 +8,7 @@
     --height-header : 120px;
     --height-navbar : 34px;
     --height-with-search : calc(var(--height-header) - var(--height-navbar));
+    --height-sort-bar : 46px
 }
 
 *{
@@ -24,15 +25,7 @@ html{
 
 /* reponsive */
 
-.grid{
-    width: 1200px;
-    max-width: 100%;
-    margin: 0 auto;
-}
 
-.grid__flud-width{
-    width: 100%;
-}
 
 .grid__row{
     display: flex;
