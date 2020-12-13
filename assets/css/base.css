@@ -8,7 +8,8 @@
     --height-header : 120px;
     --height-navbar : 34px;
     --height-with-search : calc(var(--height-header) - var(--height-navbar));
-    --height-sort-bar : 46px
+    --height-sort-bar : 46px;
+    --width-cart : 174px;
 }
 
 *{
