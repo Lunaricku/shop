@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,300&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/fonts/fontawesome-free-5.15.1-web/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 </head>
 
 <body>
@@ -417,7 +418,7 @@
         </header>
         <div class="wrapper-detail-product">
             <div class="grid wide">
-                <div class="row wrapper-detail-product-content">
+                <div class="row wrapper-detail-product-content" id="product">
                     <div class="col lg-12 md-12 sm-12">
                         <div class="page-product">
                             <a href="#" class="page-product-link">Shopee</a>
@@ -432,17 +433,26 @@
                         </div>
                     </div>
                     <div class="col lg-12 md-12 sm-12">
-                        <div class="row detail-product">
+                        <div class="row detail-product" >
                             <div class="col lg-5">
                                 <div class="detail-product-wrapper-image">
                                     <a href="" class="detail-product-link-image">
-                                        <div class="detail-product-image"
-                                            style="background-image: url(https://cf.shopee.vn/file/3e68462ec4865b936c56182673ef5cb2) ;">
+                                        <div class="detail-product-image" v-bind:style="{backgroundImage: 'url(' +getProduct.image +')'}">
                                         </div>
                                     </a>
                                     <div class="detail-product-list-image">
                                         <div class="row sm-gutter">
-                                            <div class="col lg-2-5">
+                                            <div class="col lg-2-5" v-for="(item, index) in listProductDetail">
+                                                <a  class="detail-product-link-image"
+                                                    v-bind:class="classActive(index)" v-bind:key="index">
+                                                    <div class="detail-product-image"
+                                                        v-bind:style="{ backgroundImage: 'url(' +item.image+')' }"
+                                                       
+                                                        v-on:click="handleClickColor($event, index)">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!-- <div class="col lg-2-5">
                                                 <a href="" class="detail-product-link-image">
                                                     <div class="detail-product-image"
                                                         style="background-image: url(https://cf.shopee.vn/file/3e68462ec4865b936c56182673ef5cb2) ;">
@@ -469,14 +479,7 @@
                                                         style="background-image: url(https://cf.shopee.vn/file/3e68462ec4865b936c56182673ef5cb2) ;">
                                                     </div>
                                                 </a>
-                                            </div>
-                                            <div class="col lg-2-5">
-                                                <a href="" class="detail-product-link-image">
-                                                    <div class="detail-product-image"
-                                                        style="background-image: url(https://cf.shopee.vn/file/3e68462ec4865b936c56182673ef5cb2) ;">
-                                                    </div>
-                                                </a>
-                                            </div>
+                                            </div>                                            -->
                                         </div>
                                     </div>
                                     <div class="detail-product-image-footer">
@@ -519,7 +522,7 @@
                             <div class="col lg-7">
                                 <div class="detail-product-content">
                                     <div class="detail-product-title">
-                                        <span class="detail-product-text">Màn hình tivi ultra HD 4K 50inch</span>
+                                        <span class="detail-product-text">{{title}}</span>
                                     </div>
                                     <ul class="detail-product-rate">
                                         <li class="detail-product-rate-item detail-product-rate-item-separate">
@@ -545,18 +548,18 @@
                                     </ul>
                                     <div class="detail-product-price">
                                         <div class="detail-product-origin-price">
-                                            200.000Đ
+                                            {{formatOriginalPrice}}
                                         </div>
                                         <div class="detail-product-sale-price">
-                                            112.600Đ
+                                            {{formatFinalPrice}}
                                         </div>
-                                        <div class="detail-product-sale-percent">40% giảm</div>
+                                        <div class="detail-product-sale-percent">{{sale * 100}}%</div>
                                     </div>
 
                                     <div class="detail-product-info">
                                         <div class="detail-product-code-sale">
                                             <p class="detail-product-code-sale-text">Mã giả giá của shop</p>
-                                            <p class="detail-product-code-sale-percent">5% giảm</p>
+                                            <p class="detail-product-code-sale-percent">{{codeSale * 100}}% giảm</p>
                                         </div>
                                         <div class="detail-product-transport">
                                             <div class="detail-product-transport-info">
@@ -565,17 +568,20 @@
                                                     <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/9d21899f3344277e34d40bfc08f60bc7.png"
                                                         width="25" height="15"
                                                         class="detail-product-transport-status-image">
-                                                    Miễn phí vận chuyển
+                                                    {{statusTransport}}
                                                 </div>
                                             </div>
                                             <div class="detail-product-variation">
                                                 <div class="detail-product-variation-text">Màu sắc</div>
                                                 <div class="detail-product-variation-list">
                                                     <ul class="variation-list">
-                                                        <li class="variation-list-item">
-                                                            Màu xanh
+                                                        <li class="variation-list-item"
+                                                            v-for="(item, index) in listProductDetail"
+                                                            v-bind:class="classActive(index)" v-bind:key="index"
+                                                            v-on:click="handleClickColor($event, index)">
+                                                            {{item.textVariation}}
                                                         </li>
-                                                        <li class="variation-list-item">
+                                                        <!-- <li class="variation-list-item">
                                                             Màu đỏ
                                                         </li>
                                                         <li class="variation-list-item">
@@ -583,7 +589,7 @@
                                                         </li>
                                                         <li class="variation-list-item">
                                                             Màu trắng
-                                                        </li>
+                                                        </li> -->
                                                     </ul>
                                                 </div>
                                             </div>
@@ -592,18 +598,25 @@
                                                 <div class="detail-product-quantity-input">
                                                     <ul class="detail-product-quantity-list">
                                                         <li class="detail-product-quantity-item">
-                                                            <button class="detail-product-quantity-button">-</button>
+                                                            <button class="detail-product-quantity-button"
+                                                            v-on:click="handleDowntoCart" >-</button>
                                                         </li>
                                                         <li class="detail-product-quantity-item">
-                                                            <input type="text" value="1"
+                                                            <input type="text" v-bind:value="cartNumber"
                                                                 class="detail-product-quantity-value" />
                                                         </li>
                                                         <li class="detail-product-quantity-item">
-                                                            <button class="detail-product-quantity-button">+</button>
+                                                            <button class="detail-product-quantity-button"
+                                                            v-on:click="handleUpToCart" >+</button>
                                                         </li>
                                                     </ul>
-                                                    <div class="detail-product-quantity-current">
-                                                        230 sản phẩn có sẵn
+                                                    <div class="detail-product-quantity-current"
+                                                        v-if="getProduct.quantity > 0">
+                                                        {{getProduct.quantity}} sản phẩm có sẵn
+                                                    </div>
+                                                    <div class="detail-product-quantity-current"
+                                                        v-if="getProduct.quantity <= 0">
+                                                        sản phẩm đã hết
                                                     </div>
                                                 </div>
                                             </div>
@@ -638,24 +651,10 @@
                                 CHI TIẾT SẢN PHẨM
                             </div>
                             <div class="detail-product-description-content">
-                                <span class="detail-product-description-text">
-                                    Product Name: Mini LED mirror clock
-                                    Material: ABS
-                                    Size: 7.2cm*4cm
-                                    Shell color: white
-                                    Light color: white, green, blue, pink
-                                    Weight: about 55g
-                                    Power supply mode: external power supply
-                                    -CR2032 3V not included - for memory time
-                                    -dc 5V USB cable included
-                                    Features:
-                                    -LED displays time, date and temperature;
-                                    2.2 brightness display
-                                    -Calendar: January 1, 2000 - December 31, 2099
-                                    -Three sets of alarm clock functions
-                                    -Temperature range: -9 ° C -50 ° C
-                                    -Mirror function
-                                    -Mode setting 18:00-06:00
+                                <span class="detail-product-description-text" 
+                                    v-for="item in listDescription" > {{ item }}        
+                                </span>
+                                <span class="detail-product-description-text" v-html="description" >      
                                 </span>
                             </div>
                         </div>
@@ -769,5 +768,6 @@
 
 
 </body>
+<script src="assets/js/detailProduct.js"></script>
 
 </html>
